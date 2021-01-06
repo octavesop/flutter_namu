@@ -13,7 +13,19 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Register1(),
+      routes: {
+        'reg_1': (context) => Register1(),
+        'reg_2': (context) => Register2(),
+      },
     );
   }
+}
+
+
+class Person {
+  String name;
+  int age;
+
+  Person(this.name, this.age);
 }
 
