@@ -3,10 +3,10 @@ import 'main.dart';
 
 void main() => runApp(MyApp());
 
-//이것은 두 번째 페이지입니다.
-class Register2 extends StatelessWidget {
+//이것은 다섯 번째 페이지입니다.
+class Register5 extends StatelessWidget {
   final Person person;
-  Register2({@required this.person});
+  Register5({@required this.person});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -18,17 +18,15 @@ class Register2 extends StatelessWidget {
               Icons.arrow_forward,
               color: Colors.white,
             ),
-            onPressed: () async {
-              await Navigator.pushNamed(context, 'reg_3');
-            },
+            onPressed: () {},
           )
         ],
       ),
       body: RaisedButton(
-        child: Text('어느 정도의 활동량을 갖고 있나요?'),
+        child: Text('아이디와 비번을 입력해주세요!'),
         onPressed: () async {
-          final person = Person('홍길동', 20);
-          final result = await Navigator.pushNamed(context, 'reg_3');
+          //여기 문제는 pop이 안되면서 이전키가 활성화된다는 것.
+          final result = await Navigator.pushNamed(context, 'login');
         },
       ),
     );
