@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
-
-void main() => runApp(MyApp());
+import 'dart:async';
+import 'main.dart' show MyApp, Person;
 
 //이것은 세 번째 페이지입니다.
 class Register3 extends StatelessWidget {
-  final Person person;
-  Register3({@required this.person});
+  Register3();
+
+  String _value = '';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -24,12 +25,90 @@ class Register3 extends StatelessWidget {
           )
         ],
       ),
-      body: RaisedButton(
-        child: Text('성별과 생일을 알려주세요!'),
-        onPressed: () async {
-          final person = Person('홍길동', 20);
-          final result = await Navigator.pushNamed(context, 'reg_4');
-        },
+      body: Column(
+        children: [
+
+
+
+          Padding(
+            padding: EdgeInsets.only(bottom: 15),
+            child: Column(
+                children: <Widget> [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40),
+                    child: ListTile (
+                      title: Text('Q3. 생년월일은 언제입니까?'),
+                    ),
+                  ),
+
+                  Padding(
+                    padding: const EdgeInsets.only(left: 40, right: 40),
+                    child: TextField(
+                      decoration: InputDecoration(
+                          hintText: '020101'
+                      ),
+                    ),
+                  ),
+
+                ]),
+
+          ),
+          Padding(
+            padding: EdgeInsets.only(bottom: 5),
+            child: Column(
+                children: <Widget> [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 40),
+                    child: ListTile (
+                      title: Text('Q4. 성별은 무엇입니까?'),
+                    ),
+                  ),
+                  Center (
+                    child:  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget> [
+                        Padding (
+                            padding: const EdgeInsets.only(right: 20),
+                            child: RaisedButton (
+                              child: Text('남성'),
+                              color: Colors.white54,
+                              splashColor: Colors.green,
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'reg_4');
+                              },
+                            )
+                        ),
+
+                        Padding (
+                            padding: const EdgeInsets.only(right: 20),
+                            child: RaisedButton (
+                              child: Text('여성'),
+                              color: Colors.white54,
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'reg_4');
+
+                              },
+                            )
+                        ),
+
+                        Padding (
+                            padding: const EdgeInsets.only(right: 20),
+                            child: RaisedButton (
+                              child: Text('답하지 않음.'),
+                              color: Colors.white54,
+                              onPressed: () {
+                                Navigator.pushNamed(context, 'reg_4');
+
+                              },
+                            )
+                        ),
+                      ],
+                    ),
+                  ),
+                ]),
+          ),
+
+        ],
       ),
     );
   }
