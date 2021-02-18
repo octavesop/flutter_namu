@@ -8,6 +8,7 @@ import 'package:flutter_namu/register_6.dart';
 import 'package:flutter_namu/afterLogin.dart';
 import 'package:flutter_namu/testFood.dart';
 import 'package:flutter_namu/canPost.dart';
+import 'package:flutter_namu/makeItWork.dart';
 import 'package:flutter_namu/testStudy.dart';
 import 'package:flutter_namu/login.dart';
 //사용하는 모든 페이지를 import 해주세요!
@@ -22,7 +23,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
           primarySwatch: Colors.green //이건 임의로 바꾸시면 돼요!
       ),
-      home: CanPost(),
+      home: LoginPage(),
       routes: {
         'login': (context) => LoginPage(), //이렇게 하면 다른 페이지에서는 LoginPage 클래스를 login으로 호출할 수 있게 됩니다!
         'reg_1': (context) => Register1(),
@@ -32,6 +33,8 @@ class MyApp extends StatelessWidget {
         'reg_5': (context) => Register5(),
         'reg_6': (context) => Register6(),
         'can_post': (context) => CanPost(),
+        'makeItWork': (context) => MakeItWork(),
+        'httpDemo': (context) => HttpDemo(),
         'after_login': (context) => AfterLogin(),
         'TestTest': (context) => HttpDemo(),
       },

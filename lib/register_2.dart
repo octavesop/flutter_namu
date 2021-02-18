@@ -2,8 +2,13 @@ import 'package:flutter/material.dart';
 import 'main.dart' show MyApp, Person;
 
 //이것은 두 번째 페이지입니다.
+int active;
+
+int return2() {
+  return active;
+}
+
 class Register2 extends StatelessWidget {
-  Register2();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,7 +21,14 @@ class Register2 extends StatelessWidget {
               color: Colors.white,
             ),
             onPressed: () async {
-              await Navigator.pushNamed(context, 'reg_3');
+              if (active > 3 || active < 0) {
+                return AlertDialog(
+                  content: Text('값을 선택해주세요.'),
+                );
+              }
+              else {
+                await Navigator.pushNamed(context, 'reg_3');
+              }
             },
           )
         ],
@@ -44,7 +56,9 @@ class Register2 extends StatelessWidget {
                               child: InkWell(
                               splashColor: Colors.green, // splash color
                               onTap: () {
+                                active = 3;
                                 Navigator.pushNamed(context, 'reg_3');
+                                print(active);
                               }, // button pressed
                                 child: Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -68,7 +82,9 @@ class Register2 extends StatelessWidget {
                           child: InkWell(
                             splashColor: Colors.green, // splash color
                             onTap: () {
+                              active = 2;
                               Navigator.pushNamed(context, 'reg_3');
+                              print(active);
                             }, // button pressed
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -92,7 +108,9 @@ class Register2 extends StatelessWidget {
                           child: InkWell(
                             splashColor: Colors.green, // splash color
                             onTap: () {
+                              active = 1;
                               Navigator.pushNamed(context, 'reg_3');
+                              print(active);
                             }, // button pressed
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,
@@ -116,7 +134,9 @@ class Register2 extends StatelessWidget {
                           child: InkWell(
                             splashColor: Colors.green, // splash color
                             onTap: () {
+                              active = 0;
                               Navigator.pushNamed(context, 'reg_3');
+                              print(active);
                             }, // button pressed
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.start,

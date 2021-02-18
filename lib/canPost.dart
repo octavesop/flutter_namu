@@ -6,34 +6,49 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
 Future<List<User>> fetchPhotos(http.Client client) async {
-  final response =
-  await client.get('http://13.209.17.162/app_test01/register_user.php');
-
-  // compute 함수를 사용하여 parsePhotos를 별도 isolate에서 수행합니다.
-  return compute(parsePhotos, response.body);
+  final response = await http.post(
+    'http://13.209.17.162/app_test01/register_user.php',
+    headers: <String, String>{
+      'Content-Type': 'application/json; charset=UTF-8',
+    },
+    body: <String, String>{
+      'user_id': '11',
+      'user_name': 'name',
+      'user_pass': 'pass',
+      'user_age': '15',
+      'user_ht': '160cm',
+      'user_wt': '50kg',
+      'user_img': '',
+      'user_sex':'F',
+    },
+  );
 }
 
 // 응답 결과를 List<Photo>로 변환하는 함수.
 List<User> parsePhotos(String responseBody) {
   final parsed = json.decode(responseBody).cast<Map<String, dynamic>>();
-
   return parsed.map<User>((json) => User.fromJson(json)).toList();
 }
-int a=0;
-class User {
-  final int userId;
-  final int id;
-  final String title;
-  final String body;
 
-  User({this.userId, this.id, this.title, this.body});
+int a=0;
+
+
+class User {
+  final String id;
+  final String name;
+  final String pass;
+  final String age;
+  final String ht;
+  final String wt;
+  final String img;
+  final String sex;
+
+  User({this.id, this.name, this.pass, this.age, this.ht, this.wt, this.img, this.sex, String body, String ret_code});
 
   factory User.fromJson(Map<String, dynamic> json) {
     return User(
-      userId: json['albumId'] as int,
-      id: json['id'] as int,
-      title: json['title'] as String,
-      body: json['url'] as String,
+      ret_code: json['ret_code'] as String,
+      body: json['body'] as String,
     );
   }
 }
@@ -88,13 +103,7 @@ class PhotosList extends StatelessWidget {
       ),
       itemCount: photos.length,
       itemBuilder: (context, index) {
-        if(photos[index].title == 'sunt aut facere repellat provident occaecati excepturi optio reprehenderit') {
-          return Text(photos[index].title+"---yes");
-        } else {
-          return Text(photos[index].title+"---no");
-        }
-        //return Image.network(photos[index].thumbnailUrl);
-
+        return Image.network(photos[index].id);
       },
     );
   }

@@ -14,11 +14,15 @@ class Register1 extends StatefulWidget {
     //RadioList createState() => RadioList();
     return RadioList();
   }
-
 }
-// ignore: must_be_immutable
+
+int return1() {
+  return weight;
+}
+
+int weight;
+
 class RadioList extends State<Register1> {
-  final myController = TextEditingController(); //현재값을 얻는데 필요해.
   Widget build(BuildContext context) {
       return Scaffold(
         appBar: AppBar(
@@ -30,8 +34,12 @@ class RadioList extends State<Register1> {
                 color: Colors.white,
               ),
               onPressed: () async {
-                await Navigator.pushNamed(context, 'reg_2'
-                );
+                if (weight !=1||weight !=0 || weight != -1) {
+                  return print('값을 선택해주세요.');
+                }
+                else {
+                  await Navigator.pushNamed(context, 'reg_2');
+                }
               },
             )
           ],
@@ -55,7 +63,9 @@ class RadioList extends State<Register1> {
                               value: "감량",
                               groupValue: _weight,
                               onChanged: (value) {
+                                weight = 1;
                                 Navigator.pushNamed(context, 'reg_2');
+                                print(weight);
                               }
                           ),
                           Text("체중 감량"),
@@ -67,7 +77,9 @@ class RadioList extends State<Register1> {
                               value: "유지",
                               groupValue: _weight,
                               onChanged: (value) {
+                                weight = 0;
                                 Navigator.pushNamed(context, 'reg_2');
+                                print(weight);
                               }
                           ),
                           Text("체중 유지"),
@@ -79,7 +91,9 @@ class RadioList extends State<Register1> {
                               value: "증량",
                               groupValue: _weight,
                               onChanged: (value) {
+                                weight = -1;
                                 Navigator.pushNamed(context, 'reg_2');
+                                print(weight);
                               }
                           ),
                           Text("체중 증량"),
