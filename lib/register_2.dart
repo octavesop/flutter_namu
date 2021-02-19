@@ -4,10 +4,6 @@ import 'main.dart' show MyApp, Person;
 //이것은 두 번째 페이지입니다.
 int active;
 
-int return2() {
-  return active;
-}
-
 class Register2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -158,3 +154,24 @@ class Register2 extends StatelessWidget {
       }
 }
 
+String returnActive() {
+  String activeCase;
+  switch(active){
+    case 3:
+      activeCase = '아주 많음';
+      break;
+
+    case 2:
+      activeCase = '조금 많음';
+      break;
+
+    case 1:
+      activeCase = '조금 적음';
+      break;
+
+    case 0:
+      activeCase = '아주 적음';
+      break;
+  }
+  return activeCase;
+}

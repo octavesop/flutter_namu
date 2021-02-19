@@ -1,10 +1,9 @@
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:http/http.dart' as http;
 
 HttpGetDemoState pageState;
+
+//얘가 되는 애 같음!!!!
 
 class HttpDemo extends StatefulWidget {
   @override
@@ -116,18 +115,18 @@ class HttpGetDemoState extends State<HttpDemo> {
     setState(() {
       response = null;
     });
-    var temp = await http.post("http://13.209.17.162/app_test01/register_user.php",
+    var temp = await http.post(url,
         headers: {
         },
         body:
           <String, String>{
-            'user_id': 'fluttertest',
-            'user_name': 'name',
+            'user_id': 'why',
+            'user_name': 'why',
             'user_pass': '1234',
             'user_age': '15',
             'user_ht': '160',
             'user_wt': '50',
-            'user_img': 'flutter.jpg',
+            'user_img': 'whydoesntwork.jpg',
             'user_sex':'F',
           },
     );

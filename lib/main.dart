@@ -5,12 +5,9 @@ import 'package:flutter_namu/register_3.dart';
 import 'package:flutter_namu/register_4.dart';
 import 'package:flutter_namu/register_5.dart';
 import 'package:flutter_namu/register_6.dart';
-import 'package:flutter_namu/afterLogin.dart';
-import 'package:flutter_namu/testFood.dart';
-import 'package:flutter_namu/canPost.dart';
-import 'package:flutter_namu/makeItWork.dart';
-import 'package:flutter_namu/testStudy.dart';
 import 'package:flutter_namu/login.dart';
+import 'package:flutter_namu/testStudy.dart';
+import 'package:flutter_namu/afterLogin.dart';
 //사용하는 모든 페이지를 import 해주세요!
 
 void main() => runApp(MyApp()); //다른 페이지에는 있으면 안 됩니다!
@@ -32,11 +29,8 @@ class MyApp extends StatelessWidget {
         'reg_4': (context) => Register4(),
         'reg_5': (context) => Register5(),
         'reg_6': (context) => Register6(),
-        'can_post': (context) => CanPost(),
-        'makeItWork': (context) => MakeItWork(),
-        'httpDemo': (context) => HttpDemo(),
-        'after_login': (context) => AfterLogin(),
-        'TestTest': (context) => HttpDemo(),
+        'http_demo': (context) => HttpDemo(),
+        'login_success': (context) => AfterLogin(),
       },
     );
   }

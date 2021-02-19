@@ -7,6 +7,11 @@ class Register5 extends StatefulWidget {
   MyCustomFormState createState() => MyCustomFormState();
 }
 
+String _id;
+String _email;
+String _pw;
+String _pwCheck;
+
 class MyCustomFormState extends State<Register5> {
   final TextEditingController id = TextEditingController();
   final TextEditingController email = TextEditingController();
@@ -16,18 +21,22 @@ class MyCustomFormState extends State<Register5> {
 
   void _printIdTextEdit() {
     print('아이디 값은: ${id.text}');
+    _id = id.text;
   }
 
   void _printEmailTextEdit() {
     print('이메일 값은: ${email.text}');
+    _email = email.text;
   }
 
   void _printPwTextEdit() {
     print('비밀번호 값은: ${pw.text}');
+    _pw = pw.text;
   }
 
   void _printPwCheckTextEdit() {
     print('비밀번호 체크 값은: ${pw.text}');
+    _pwCheck = pwCheck.text;
   }
 
   void initState() {
@@ -136,3 +145,14 @@ class MyCustomFormState extends State<Register5> {
   }
 }
 
+String returnId() {
+  return _id;
+}
+
+String returnEmail() {
+  return _email;
+}
+
+String returnPw() {
+  return _pw;
+}

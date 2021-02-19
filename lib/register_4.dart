@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
 
 //이것은 네 번째 페이지입니다.
 
@@ -7,6 +6,10 @@ class Register4 extends StatefulWidget {
   @override
   MyCustomFormState createState() => MyCustomFormState();
 }
+
+String _height;
+String _weight;
+String _aimWeight;
 
 class MyCustomFormState extends State<Register4> {
   final TextEditingController height = TextEditingController();
@@ -16,14 +19,17 @@ class MyCustomFormState extends State<Register4> {
 
   void _printHeightTextEdit() {
     print('키 값은: ${height.text}');
+    _height = height.text;
   }
 
   void _printWeightTextEdit() {
     print('몸무게 값은: ${weight.text}');
+    _weight = weight.text;
   }
 
   void _printAimWeightTextEdit() {
     print('목표 체중 값은: ${aimWeight.text}');
+    _aimWeight = aimWeight.text;
   }
 
   void initState() {
@@ -58,12 +64,6 @@ class MyCustomFormState extends State<Register4> {
               print(weight);
               print(aimWeight);
             },
-            /*
-            onPressed: () async {
-              final person = Person('홍길동', 20);
-              final result = await Navigator.pushNamed(context, 'reg_5');
-            },
-            */
           )
         ],
       ),
@@ -150,3 +150,14 @@ class MyCustomFormState extends State<Register4> {
   }
 }
 
+String returnHeight() {
+  return _height;
+}
+
+String returnWeight() {
+  return _weight;
+}
+
+String returnAimWeight() {
+  return _aimWeight;
+}

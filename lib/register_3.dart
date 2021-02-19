@@ -1,8 +1,4 @@
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'main.dart' show MyApp;
-
-
 
 //이것은 세 번째 페이지입니다.
 int sex; //성별값을 숫자로 받음
@@ -13,30 +9,21 @@ class Register3 extends StatefulWidget {
   MyCustomFormState createState() => MyCustomFormState();
 }
 
-//망할놈의 컨트롤러 제어를 하려면 ModalRoute.of(context).settings.arguments가 있어야한단다.
-//얘 때문에 삽질을 몇 시간을 한 거냐 나
-class ScreenArguments {
-  final String contact;
-  final String name;
-
-  ScreenArguments({this.contact, this.name});
-}
+String _birthday;
 
 class MyCustomFormState extends State<Register3> {
   MyCustomFormState();
 
-
-String birthd;
   void _printTextEdit() {
     print(birth.text);
+    _birthday = birth.text;
+    print(_birthday);
   }
-
   void initState() {
     super.initState();
     birth.addListener(_printTextEdit);
     //이 친구가
   }
-
   void dispose() {
     birth.dispose();
     super.dispose();
@@ -154,4 +141,26 @@ String birthd;
       ),
     );
   }
+}
+
+String returnBirthday() {
+  return _birthday;
+}
+
+String returnSex() {
+  String sexCase;
+  switch(sex){
+    case 1:
+      sexCase = 'M';
+      break;
+
+    case 0:
+      sexCase = 'F';
+      break;
+
+    case -1:
+      sexCase = 'N';
+      break;
+  }
+  return sexCase;
 }

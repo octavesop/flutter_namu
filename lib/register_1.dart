@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 
-import 'main.dart' show MyApp;
-import 'package:flutter_namu/register_2.dart';
-
 //이것은 첫 번째 페이지입니다.
 enum Weight {DOWN, UP, STAY} //라디오 버튼에서 그룹이 되는 항목을 열거형으로 나타낸 것.
 Weight _weight = Weight.STAY;
@@ -14,10 +11,6 @@ class Register1 extends StatefulWidget {
     //RadioList createState() => RadioList();
     return RadioList();
   }
-}
-
-int return1() {
-  return weight;
 }
 
 int weight;
@@ -106,4 +99,22 @@ class RadioList extends State<Register1> {
             ),
         );
   }
+}
+
+String returnAimWeightCase() {
+  String weightCase;
+  switch(weight){
+    case 1:
+      weightCase = '감량';
+      break;
+
+    case 0:
+      weightCase = '유지';
+      break;
+
+    case -1:
+      weightCase = '증량';
+      break;
+  }
+  return weightCase;
 }
