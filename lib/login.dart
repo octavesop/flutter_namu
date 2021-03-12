@@ -9,6 +9,8 @@ final String url = "http://13.209.17.162/app_test01/login.php";
 
 String _loginId;
 String _loginPw;
+String sessionId;
+String sessionPw;
 
 //로그인 페이지
 class LoginPage extends StatefulWidget {
@@ -28,12 +30,12 @@ class HttpGetDemoState extends State<LoginPage> {
   String response = "";
 
   void _printIdTextEdit() {
-    print('키 값은: ${loginId.text}');
+    print('아이디 값은: ${loginId.text}');
     _loginId = loginId.text;
   }
 
   void _printPwTextEdit() {
-    print('몸무게 값은: ${loginPw.text}');
+    print('비밀번호 값은: ${loginPw.text}');
     _loginPw = loginPw.text;
   }
 
@@ -108,11 +110,6 @@ class HttpGetDemoState extends State<LoginPage> {
                   color: Colors.limeAccent,
                   onPressed: () {
                     _getUrl(url);
-                    print(response);
-                    if(response == '{"response":{"header":{"ret_code":"00","ret_msg":"Login"}}}') {
-                      Navigator.pushNamed(context, 'login_success');
-                    }
-
                   },
                 ),
               ),
@@ -185,7 +182,23 @@ class HttpGetDemoState extends State<LoginPage> {
     );
     setState(() {
       response = temp.body;
+      if(response == '{"response":{"header":{"ret_code":"00","ret_msg":"Login"}}}') {
+        sessionId = _loginId;
+        sessionPw = _loginPw;
+        Navigator.pushNamed(context, 'splash');
+      } else {
+        print(response);
+      }
     });
   }
   }
 
+  String sessionIdReturn() {
+  print(sessionId);
+  return sessionId;
+}
+
+String sessionPwReturn() {
+  print(sessionPw);
+  return sessionPw;
+}
